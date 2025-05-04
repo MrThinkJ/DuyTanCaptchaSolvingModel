@@ -4,7 +4,7 @@ import requests
 from model import CaptchaModel
 import torch
 from inference import inference
-
+    
 app = Flask(__name__)
 CORS(app)
 categories = [
@@ -47,7 +47,7 @@ res = requests.get("https://mydtu.duytan.edu.vn/Signin.aspx")
 cookies = res.cookies.get_dict()["ASP.NET_SessionId"]
 headers = {
     "cookie": "ASP.NET_SessionId={}".format(cookies),
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
 }
 
 

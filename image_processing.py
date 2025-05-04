@@ -44,7 +44,7 @@ def cut(image, w, h):
     return image[w:-w, h:-h]
 
 
-def extract_character(input_image, OUTPUT_FOLDER="data_inference"):
+def extract_character(input_image, output_folder="data_inference"):
     img = cv2.imread(input_image)
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ret, thresh1 = cv2.threshold(img_gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
@@ -55,14 +55,14 @@ def extract_character(input_image, OUTPUT_FOLDER="data_inference"):
     offset_h = 4
     bh = 0
     eh = img_gray.shape[0]
-    part1 = img_filter[bh + offset_h : eh - offset_h, 5:30]
-    part2 = img_filter[bh + offset_h : eh - offset_h, 30:55]
-    part3 = img_filter[bh + offset_h : eh - offset_h, 60:85]
-    part4 = img_filter[bh + offset_h : eh - offset_h, 90:115]
+    part1 = img_filter[bh + offset_h: eh - offset_h, 5:30]
+    part2 = img_filter[bh + offset_h: eh - offset_h, 30:55]
+    part3 = img_filter[bh + offset_h: eh - offset_h, 60:85]
+    part4 = img_filter[bh + offset_h: eh - offset_h, 90:115]
 
     parts = [part1, part2, part3, part4]
 
     for index, part in enumerate(parts):
-        save_path = os.path.join(OUTPUT_FOLDER)
+        save_path = os.path.join(output_folder)
         p = os.path.join(save_path, "{}.png".format(index))
         cv2.imwrite(p, part)
